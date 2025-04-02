@@ -25,7 +25,7 @@ class EntryLogsController < ApplicationController
 
     respond_to do |format|
       if @entry_log.save
-        format.html { redirect_to @entry_log, notice: "Entry log was successfully created." }
+        format.html { redirect_to entry_logs_path, notice: "Entry log was successfully created." }
         format.json { render :show, status: :created, location: @entry_log }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class EntryLogsController < ApplicationController
   def update
     respond_to do |format|
       if @entry_log.update(entry_log_params)
-        format.html { redirect_to @entry_log, notice: "Entry log was successfully updated." }
+        format.html { redirect_to entry_logs_path, notice: "Entry log was successfully updated." }
         format.json { render :show, status: :ok, location: @entry_log }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,6 +65,6 @@ class EntryLogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entry_log_params
-      params.expect(entry_log: [ :date, :type, :name, :calories, :protein, :added_sugars, :total_sugars, :carbs ])
+      params.require(:entry_log).permit(:date, :meal_type, :name, :calories, :protein, :added_sugars, :total_sugars, :carbs)
     end
 end
