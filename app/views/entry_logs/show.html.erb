@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @entry_log %>
+
+<div>
+  <%= link_to "Edit this entry log", edit_entry_log_path(@entry_log) %> |
+  <%= link_to "Back to entry logs", entry_logs_path %>
+
+  <%= button_to "Destroy this entry log", @entry_log, method: :delete %>
+</div>
