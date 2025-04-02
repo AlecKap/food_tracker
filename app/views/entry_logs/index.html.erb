@@ -2,15 +2,40 @@
 
 <% content_for :title, "Entry logs" %>
 
-<h1>Entry logs</h1>
-
-<div id="entry_logs">
-  <% @entry_logs.each do |entry_log| %>
-    <%= render entry_log %>
-    <p>
-      <%= link_to "Show this entry log", entry_log %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New entry log", new_entry_log_path %>
+<h1>Entry Logs</h1>
+<p><%= link_to "New Entry Log", new_entry_log_path %></p>
+<p><%= link_to "Back to Dashboard", root_path %></p>
+<section class="table">
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Meal Type</th>
+        <th>Name</th>
+        <th>Calories</th>
+        <th>Protein</th>
+        <th>Added Sugars</th>
+        <th>Total Sugars</th>
+        <th>Carbs</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @entry_logs.each do |entry_log| %>
+        <tr onclick="window.location='<%= entry_log_path(entry_log) %>'" style="cursor: pointer;">
+          <td><%= entry_log.date %></td>
+          <td><%= entry_log.meal_type %></td>
+          <td><%= entry_log.name %></td>
+          <td><%= entry_log.calories %></td>
+          <td><%= entry_log.protein %></td>
+          <td><%= entry_log.added_sugars %></td>
+          <td><%= entry_log.total_sugars %></td>
+          <td><%= entry_log.carbs %></td>
+          <td>
+            <%= link_to "Delete", entry_log, method: :delete, data: { confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
