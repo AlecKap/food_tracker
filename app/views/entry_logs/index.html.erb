@@ -5,6 +5,35 @@
 <h1>Entry Logs</h1>
 <p><%= link_to "New Entry Log", new_entry_log_path %></p>
 <p><%= link_to "Back to Dashboard", root_path %></p>
+<section class="running-daily-totls">
+  <div class="totals-table">
+    <table border="1" cellpadding="5" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Todays Date</th>
+          <th>Total Meals Today</th>
+          <th>Total Calories</th>
+          <th>Total Protein</th>
+          <th>Total Added Sugars</th>
+          <th>Total Daily Sugars</th>
+          <th>Total Carbs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @entry_logs.formatted_date %></td>
+          <td><%= @entry_logs.total_meals_today %></td>
+          <td><%= @entry_logs.total_calories %></td>
+          <td><%= @entry_logs.total_protein %></td>
+          <td><%= @entry_logs.total_added_sugars %></td>
+          <td><%= @entry_logs.total_daily_sugars %></td>
+          <td><%= @entry_logs.total_carbs %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<br>
 <section class="table">
   <table border="1" cellpadding="5" cellspacing="0">
     <thead>
