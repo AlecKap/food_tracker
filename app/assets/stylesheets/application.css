@@ -1,25 +1,37 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  background-color: var(--table-bg);
+}
+
 .btn {
-  background-color: #4CAF50; /* Green */
   border: none;
-  color: white;
-  padding: 5px 10px;
+  padding: 10px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 4px;  
+  border-radius: 4px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  transition: background-color 0.3s;
 }
+
 .btn:hover {
-  background-color: #45a049; 
+  background-color: var(--btn-bg);
+  opacity: 0.8;
 }
+
 .btn-delete {
   background-color: #fb1100; 
 }
 
 .btn-delete:hover {
-  background-color: #d32f2f; 
+  background-color: #d32f2f;
+  opacity: 0.8;
 }
 
 .logo {
@@ -30,32 +42,131 @@
 
 .welcome-main {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
-  height: 100vh; /* Full viewport height */
-  text-align: center; /* Center text */
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
 }
 
 h1 {
-  font-size: 2.5em; /* Increase font size */
-  margin-bottom: 0px; /* Add space below the heading */
-  margin: 10px; /* Add space below the heading */
+  font-size: 2.5em;
+  margin-bottom: 0px;
+  margin: 10px;
 }
+
 h2 {
-  font-size: 1.5em; /* Increase font size */
-  margin: 5px; /* Add space below the heading */
-  /* margin-bottom: 5px; Add space below the heading */
+  font-size: 1.5em;
+  margin: 5px;
 }
 
 p {
-  font-size: 1.2em; /* Increase font size */
-  margin: 5px; /* Add space below the heading */
+  font-size: 1.2em;
+  margin: 5px;
 }
 
-.welcome-action {
+.actions {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
+  align-items: center;
+  justify-content: center;
+}
+
+/* ***************************** */
+
+.totals-table, .table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  background-color: var(--table-bg);
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .running-daily-totls, .table {
+    overflow-x: auto;
+    display: block;
+  }
+
+  table {
+    min-width: 100%;
+    background-color: var(--table-bg);
+  }
+
+  th, td {
+    font-size: 14px;
+    padding: 6px;
+    border-color: var(--text-color);
+  }
+
+  .btn {
+    font-size: 16px;
+    width: 90%;
+    text-align: center;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  th, td {
+    font-size: 12px;
+    border-color: var(--text-color);
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+}
+
+.tables {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 10px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  background-color: #525252;
+}
+
+h1 {
+  text-align: center;
+}
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --table-bg: #f9f9f9;
+  --btn-bg: #216405;
+  --btn-text: #ffffff;
 }
