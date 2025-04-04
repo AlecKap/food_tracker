@@ -1,4 +1,5 @@
 class EntryLog < ApplicationRecord
+  belongs_to :user
   # class methods
   validates :name, presence: true, length: { maximum: 50 }
   validates :meal_type, presence: true, inclusion: { in: %w[Breakfast Lunch Dinner Snack] }
