@@ -43,4 +43,8 @@ class EntryLog < ApplicationRecord
   def self.total_meals_today
     where(date: Date.today).count
   end
+
+  def self.newest_first
+    order(date: :desc)
+  end
 end
