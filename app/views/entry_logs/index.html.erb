@@ -1,14 +1,16 @@
 <p style="color: green"><%= notice %></p>
 <body class="entry-logs-index">
-  <%= image_tag 'food_tracker_logo.png', alt: 'FoodTracker Logo', class: 'logo' %>
-  <section class="actions">
-    <p><%= link_to "New Entry Log", new_entry_log_path, class: 'btn btn-primary' %></p>
-    <p><%= link_to "Back to Dashboard", root_path, class: 'btn btn-primary' %></p>
-  </section>
+  <div class="logo-actions">
+    <%= image_tag 'food_tracker_logo.png', alt: 'FoodTracker Logo', class: 'logo' %>
+    <section class="actions">
+      <p><%= link_to "New Entry Log", new_entry_log_path, class: 'btn btn-primary' %></p>
+      <p><%= link_to "Back to Dashboard", root_path, class: 'btn btn-primary' %></p>
+    </section>
+  </div>
   <div class="tables">
     <section class="running-daily-totls">
       <div class="totals-table">
-        <table border="1" cellpadding="5" cellspacing="0">
+        <table>
           <thead>
             <tr>
               <th>Todays Date</th>
