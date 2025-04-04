@@ -110,6 +110,10 @@ th, td {
   border-color: var(--text-color);
 }
 
+tbody tr:hover {
+  background-color: #747373;
+}
+
 @media (max-width: 768px) {
   .running-daily-totls, .table {
     overflow-x: auto;
@@ -272,4 +276,17 @@ form input[type="submit"] {
 
 form input[type="submit"]:hover {
   background-color: #1a5304;
+}
+
+.sign-out-wrapper form {
+  all: unset;
+  display: inline;
+}
+
+.entry-log-show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
