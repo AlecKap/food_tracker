@@ -5,6 +5,8 @@
     <h2>Welcome, <%= current_user.email %></h2>
     <div class="actions">
       <%= link_to 'Add Food/Drink', new_entry_log_path, class: 'btn btn-primary' %>
+      <%= link_to 'Add Meal', new_meal_path, class: 'btn btn-primary' %>
+      <%= link_to 'View Meals', meals_path, class: 'btn btn-primary' %>
       <%= link_to 'View Entries', entry_logs_path, class: 'btn btn-primary' %>
       <div class="sign-out-wrapper">
         <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
