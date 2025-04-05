@@ -12,13 +12,17 @@ class EntryLog < ApplicationRecord
   validate :date_cannot_be_in_the_future
 
   def date_cannot_be_in_the_future
-    if date.present? && date > Date.today.in_time_zone
+    if date.present? && date > DateTime.current
       errors.add(:date, "can't be in the future")
     end
   end
 
   def self.formatted_date
-    Date.today.in_time_zone.strftime("%A %B %-d, %Y")
+    DateTime.current.strftime("%a %b %-d, %Y %-l:%M%P")
+  end
+
+  def formatted_date
+    date.strftime("%a %b %-d, %Y %-l:%M%P")
   end
 
   def self.total_calories
