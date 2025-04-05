@@ -12,37 +12,37 @@ class EntryLog < ApplicationRecord
   validate :date_cannot_be_in_the_future
 
   def date_cannot_be_in_the_future
-    if date.present? && date > Date.today
+    if date.present? && date > Date.today.in_time_zone
       errors.add(:date, "can't be in the future")
     end
   end
 
   def self.formatted_date
-    Date.today.strftime("%A %B %-d, %Y")
+    Date.today.in_time_zone.strftime("%A %B %-d, %Y")
   end
 
   def self.total_calories
-    where(date: Date.today).sum(:calories)
+    where(date: Date.today.in_time_zone).sum(:calories)
   end
 
   def self.total_protein
-    where(date: Date.today).sum(:protein)
+    where(date: Date.today.in_time_zone).sum(:protein)
   end
 
   def self.total_added_sugars
-    where(date: Date.today).sum(:added_sugars)
+    where(date: Date.today.in_time_zone).sum(:added_sugars)
   end
 
   def self.total_daily_sugars
-    where(date: Date.today).sum(:total_sugars)
+    where(date: Date.today.in_time_zone).sum(:total_sugars)
   end
 
   def self.total_carbs
-    where(date: Date.today).sum(:carbs)
+    where(date: Date.today.in_time_zone).sum(:carbs)
   end
 
   def self.total_meals_today
-    where(date: Date.today).count
+    where(date: Date.today.in_time_zone).count
   end
 
   def self.newest_first
