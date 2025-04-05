@@ -18,7 +18,6 @@ table {
   border-radius: 4px;
   background-color: var(--btn-bg);
   color: var(--btn-text);
-  transition: background-color 0.3s;
 }
 
 .btn:hover {
@@ -32,7 +31,6 @@ table {
 
 .btn-delete:hover {
   background-color: #d32f2f;
-  opacity: 0.8;
 }
 
 .welcome-logo {
@@ -89,6 +87,7 @@ p {
   gap: 5px;
 }
 
+
 /* ***************************** */
 
 .totals-table, .table {
@@ -138,7 +137,14 @@ tbody tr:hover {
     color: var(--btn-text);
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
+  }
+
+  .btn-delete {
+    background-color: #fb1100; 
+  }
+  
+  .btn-delete:hover {
+    background-color: #d32f2f;
   }
 
   form input[type="submit"] {
@@ -153,12 +159,29 @@ tbody tr:hover {
     max-width: 20%; /* Ensures the logo doesn't overflow */
     height: auto; /* Maintains aspect ratio */
   }
+
+  .welcome-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
 }
 
 @media (max-width: 480px) {
+  .running-daily-totls, .table {
+    overflow-x: auto;
+    display: block;
+  }
+
   th, td {
     font-size: 12px;
     border-color: var(--text-color);
+  }
+
+  table {
+    min-width: 100%;
+    background-color: var(--table-bg);
   }
 
   .btn {
@@ -168,7 +191,26 @@ tbody tr:hover {
     color: var(--btn-text);
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
+  }
+  
+  .btn-delete {
+    background-color: #fb1100; 
+  }
+  
+  .btn-delete:hover {
+    background-color: #d32f2f;
+  }
+
+  form input[type="submit"] {
+    width: 100%; /* Button takes full width on smaller screens */
+    font-size: 0.9rem; /* Reduce font size for smaller screens */
+  }
+
+  .welcome-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
   }
 }
 
