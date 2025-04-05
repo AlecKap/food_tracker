@@ -1,0 +1,39 @@
+<p style="color: green"><%= notice %></p>
+<body>
+  <div class="logo-actions">
+    <%= image_tag 'food_tracker_logo.png', alt: 'FoodTracker Logo', class: 'logo' %>
+    <section class="actions">
+      <p><%= link_to "New Meal", new_meal_path, class: 'btn btn-primary' %></p>
+      <p><%= link_to "Back to Dashboard", root_path, class: 'btn btn-primary' %></p>
+    </section>
+  </div>
+
+  <div>
+    <section class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Calories</th>
+            <th>Protein</th>
+            <th>Added Sugars</th>
+            <th>Total Sugars</th>
+            <th>Carbs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @meals.each do |meal| %>
+            <tr onclick="window.location='<%= meal_path(meal) %>'" style="cursor: pointer;">
+              <td><%= meal.name %></td>
+              <td><%= meal.calories %></td>
+              <td><%= meal.protein %></td>
+              <td><%= meal.added_sugars %></td>
+              <td><%= meal.total_sugars %></td>
+              <td><%= meal.carbs %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</body>

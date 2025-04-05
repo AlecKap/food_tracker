@@ -1,0 +1,64 @@
+<body>
+  <%= form_with(model: meal, url: meals_path) do |form| %>
+    <% if meal.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
+
+        <ul>
+          <% meal.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name, placeholder: "Name of Meal" %>
+    </div>
+
+    <div>
+      <%= form.label :calories, style: "display: block" %>
+      <%= form.number_field :calories %>
+    </div>
+
+    <div>
+      <%= form.label :protein, style: "display: block" %>
+      <%= form.number_field :protein %>
+    </div>
+
+    <div>
+      <%= form.label :added_sugars, style: "display: block" %>
+      <%= form.number_field :added_sugars %>
+    </div>
+
+    <div>
+      <%= form.label :total_sugars, style: "display: block" %>
+      <%= form.number_field :total_sugars %>
+    </div>
+
+    <div>
+      <%= form.label :carbs, style: "display: block" %>
+      <%= form.number_field :carbs %>
+    </div>
+
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <br>
+
+    <div>
+      <%= form.submit "Save Meal", class: "btn btn-primary" %>
+    </div>
+    
+    <div>
+      <%= link_to "Meals", meals_path %>
+    </div>
+
+    <div>
+      <%= link_to "Entry Logs", entry_logs_path %>
+    </div>
+
+    <div>
+      <%= link_to "Dashboard", root_path %>
+    </div>
+    <%end%>
+</body>
