@@ -1,7 +1,7 @@
 <div id="<%= dom_id entry_log %>">
   <p>
     <strong>Date:</strong>
-    <%= entry_log.date %>
+    <%= entry_log.date.strftime("%a %b %-d, %Y %-l:%M%P") %>
   </p>
 
   <p>
