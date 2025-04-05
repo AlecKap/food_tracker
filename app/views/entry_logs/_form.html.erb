@@ -13,8 +13,8 @@
     <% end %>
 
     <div>
-      <%= form.label :date, style: "display: block" %>
-      <%= form.date_field :date, value: Date.today %>
+      <%= form.label :date, "Date and Time", style: "display: block" %>
+      <%= form.datetime_local_field :date, value: DateTime.current.strftime("%Y-%m-%dT%H:%M") %>
     </div>
 
     <div>

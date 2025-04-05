@@ -54,7 +54,7 @@
         <tbody>
           <% @entry_logs.each do |entry_log| %>
             <tr onclick="window.location='<%= entry_log_path(entry_log) %>'" style="cursor: pointer;">
-              <td><%= entry_log.date %></td>
+              <td><%= entry_log.formatted_date %></td>
               <td><%= entry_log.meal_type %></td>
               <td><%= entry_log.name %></td>
               <td><%= entry_log.calories %></td>
