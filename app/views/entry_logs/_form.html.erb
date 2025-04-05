@@ -13,6 +13,11 @@
     <% end %>
 
     <div>
+      <%= form.label :meal, "Select a Saved Meal", style: "display: block" %>
+      <%= form.select :meal, options_from_collection_for_select(current_user.meals, :id, :name), prompt: "Select a Meal" %>
+    </div>
+
+    <div>
       <%= form.label :date, "Date and Time", style: "display: block" %>
       <%= form.datetime_local_field :date, value: DateTime.current.strftime("%Y-%m-%dT%H:%M") %>
     </div>
@@ -55,7 +60,7 @@
     <%= form.hidden_field :user_id, value: current_user.id %>
   <br>
     <div>
-      <%= form.submit %>
+      <%= form.submit "Save Entry Log", class: "btn btn-primary" %>
     </div>
 
     <div>
