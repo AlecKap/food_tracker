@@ -7,8 +7,7 @@ class EntryLogsController < ApplicationController
   end
 
   # GET /entry_logs/1 or /entry_logs/1.json
-  def show
-  end
+  def show; end
 
   # GET /entry_logs/new
   def new
@@ -16,13 +15,24 @@ class EntryLogsController < ApplicationController
   end
 
   # GET /entry_logs/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /entry_logs or /entry_logs.json
   def create
     # @entry_log = EntryLog.new(entry_log_params)
     @entry_log = current_user.entry_logs.new(entry_log_params)
+
+    if params[:entry_log][:meal].present?
+      meal = Meal.find(params[:entry_log][:meal])
+      @entry_log.assign_attributes(
+        name: meal.name,
+        calories: meal.calories,
+        protein: meal.protein,
+        added_sugars: meal.added_sugars,
+        total_sugars: meal.total_sugars,
+        carbs: meal.carbs
+      )
+    end
 
     respond_to do |format|
       if @entry_log.save
