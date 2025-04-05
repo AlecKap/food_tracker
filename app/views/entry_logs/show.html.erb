@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @entry_log %>
+
+<body class="entry-log-show">
+  <div class="actions">
+    <%= link_to "Edit this entry log", edit_entry_log_path(@entry_log), class: "btn btn-primary" %>
+    <%= link_to "Back to entry logs", entry_logs_path, class: "btn btn-primary" %>
+  </div>
+  <div class="sign-out-wrapper">
+    <%= button_to "Destroy this entry log", entry_log_path(@entry_log), method: :delete, class: "btn btn-delete" %>
+  </div>
+</body>
