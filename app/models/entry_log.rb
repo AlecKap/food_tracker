@@ -1,6 +1,8 @@
 class EntryLog < ApplicationRecord
+  include DateRangeable
+
   belongs_to :user
-  # class methods
+
   validates :name, presence: true, length: { maximum: 50 }
   validates :meal_type, presence: true, inclusion: { in: %w[Breakfast Lunch Dinner Snack] }
   validates :calories, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -26,27 +28,27 @@ class EntryLog < ApplicationRecord
   end
 
   def self.total_calories
-    where(date: Date.today.in_time_zone).sum(:calories)
+    where(date: start_of_day..end_of_day).sum(:calories)
   end
 
   def self.total_protein
-    where(date: Date.today.in_time_zone).sum(:protein)
+    where(date: start_of_day..end_of_day).sum(:protein)
   end
 
   def self.total_added_sugars
-    where(date: Date.today.in_time_zone).sum(:added_sugars)
+    where(date: start_of_day..end_of_day).sum(:added_sugars)
   end
 
   def self.total_daily_sugars
-    where(date: Date.today.in_time_zone).sum(:total_sugars)
+    where(date: start_of_day..end_of_day).sum(:total_sugars)
   end
 
   def self.total_carbs
-    where(date: Date.today.in_time_zone).sum(:carbs)
+    where(date: start_of_day..end_of_day).sum(:carbs)
   end
 
   def self.total_meals_today
-    where(date: Date.today.in_time_zone).count
+    where(date: start_of_day..end_of_day).count
   end
 
   def self.newest_first
