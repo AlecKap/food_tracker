@@ -34,6 +34,28 @@ class EntryLogsController < ApplicationController
       )
     end
 
+    if params[:entry_log][:save_meal] == "1"
+      meal_params =  {
+        name: params[:entry_log][:name],
+        calories: params[:entry_log][:calories],
+        protein: params[:entry_log][:protein],
+        added_sugars: params[:entry_log][:added_sugars],
+        total_sugars: params[:entry_log][:total_sugars],
+        carbs: params[:entry_log][:carbs]
+      }
+
+      meal = Meal.new(meal_params)
+      meal.user = current_user
+      meal.name = params[:entry_log][:name]
+      meal.calories = params[:entry_log][:calories]
+      meal.protein = params[:entry_log][:protein]
+      meal.added_sugars = params[:entry_log][:added_sugars]
+      meal.total_sugars = params[:entry_log][:total_sugars]
+      meal.carbs = params[:entry_log][:carbs]
+      meal.save
+    end
+
+
     respond_to do |format|
       if @entry_log.save
         format.html { redirect_to entry_logs_path, notice: "Entry log was successfully created." }
