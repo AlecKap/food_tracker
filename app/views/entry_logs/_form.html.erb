@@ -58,7 +58,12 @@
     </div>
 
     <%= form.hidden_field :user_id, value: current_user.id %>
-  <br>
+    
+    <div>
+      <%= form.label :save_meal, "Save this meal for future use?" %>
+      <%= form.check_box :save_meal %>
+    </div>
+
     <div>
       <%= form.submit "Save Entry Log", class: "btn btn-primary" %>
     </div>
