@@ -37,6 +37,13 @@
       </div>
     </section>
     <br>
+    <br>
+    <section class="filter-links">
+      <%= link_to "Today", entry_logs_path(today: true)%>
+      <%= link_to "Two Days", entry_logs_path%>
+      <%= link_to "Week", entry_logs_path(week: true)%>
+      <%= link_to "Month", entry_logs_path(month: true)%>
+    </section>
     <section class="table">
       <table>
         <thead>
