@@ -35,18 +35,19 @@ class EntryLog < ApplicationRecord
   end
 
   def self.formatted_date
-    DateTime.current.strftime("%a %b %-d, %Y %-l:%M%P")
+    DateTime.current.strftime("%a %b %-d, %Y")
   end
 
-  def self.total_calories
+
+  def self.daily_total_calories
     where(date: start_of_day..end_of_day).sum(:calories)
   end
 
-  def self.total_protein
+  def self.daily_total_protein
     where(date: start_of_day..end_of_day).sum(:protein)
   end
 
-  def self.total_added_sugars
+  def self.daily_total_added_sugars
     where(date: start_of_day..end_of_day).sum(:added_sugars)
   end
 
@@ -54,7 +55,7 @@ class EntryLog < ApplicationRecord
     where(date: start_of_day..end_of_day).sum(:total_sugars)
   end
 
-  def self.total_carbs
+  def self.daily_total_carbs
     where(date: start_of_day..end_of_day).sum(:carbs)
   end
 
@@ -65,6 +66,34 @@ class EntryLog < ApplicationRecord
   def self.newest_first
     where(date: start_of_day..end_of_day).order(date: :desc)
   end
+
+  # def self.yesterdays_formatted_date
+  #   1.day.ago.strftime("%a %b %-d, %Y")
+  # end
+
+  # def self.yesterdays_total_calories
+  #   where(date: 1.day.ago.beginning_of_day..1.day.ago.end_of_day).sum(:calories)
+  # end
+
+  # def self.yesterdays_total_protein
+  #   where(date: 1.day.ago.beginning_of_day..1.day.ago.end_of_day).sum(:protein)
+  # end
+
+  # def self.yesterdays_total_added_sugars
+  #   where(date: 1.day.ago.beginning_of_day..1.day.ago.end_of_day).sum(:added_sugars)
+  # end
+
+  # def self.yesterdays_total_sugars
+  #   where(date: 1.day.ago.beginning_of_day..1.day.ago.end_of_day).sum(:total_sugars)
+  # end
+
+  # def self.yesterdays_total_carbs
+  #   where(date: 1.day.ago.beginning_of_day..1.day.ago.end_of_day).sum(:carbs)
+  # end
+
+  # def self.yesterdays_total_meals
+  #   where(date: 1.day.ago.beginning_of_day..1.day.ago.end_of_day).count
+  # end
 
   # Instance Methods
   def formatted_date
