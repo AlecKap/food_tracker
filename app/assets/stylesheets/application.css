@@ -6,12 +6,12 @@
   --btn-text: #ffffff;
 }
 
-a {
+.filter-links a {
   color: #b7b7b7;
   text-decoration: underline;
 }
 
-a:hover {
+.filter-links a:hover {
   color: #ebebeb; /* Darker color on hover */
 }
 
