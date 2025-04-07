@@ -3,6 +3,7 @@ class EntryLog < ApplicationRecord
 
   belongs_to :user
 
+  # Validations
   validates :name, presence: true, length: { maximum: 50 }
   validates :meal_type, presence: true, inclusion: { in: %w[Breakfast Lunch Dinner Snack] }
   validates :calories, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -19,16 +20,22 @@ class EntryLog < ApplicationRecord
     end
   end
 
+  # Class Methods
   def self.past_two_days
     where(date: 2.days.ago..DateTime.current).order(date: :desc)
   end
 
-  def self.formatted_date
-    DateTime.current.strftime("%a %b %-d, %Y %-l:%M%P")
+  def self.past_week
+    last_sunday = Date.today.sunday? ? Date.today : Date.today.beginning_of_week(:sunday)
+    where(date: last_sunday..DateTime.current).order(date: :desc)
   end
 
-  def formatted_date
-    date.strftime("%a %b %-d, %Y %-l:%M%P")
+  def self.past_month
+    where(date: 1.month.ago..DateTime.current).order(date: :desc)
+  end
+
+  def self.formatted_date
+    DateTime.current.strftime("%a %b %-d, %Y %-l:%M%P")
   end
 
   def self.total_calories
@@ -56,6 +63,11 @@ class EntryLog < ApplicationRecord
   end
 
   def self.newest_first
-    order(date: :desc)
+    where(date: start_of_day..end_of_day).order(date: :desc)
+  end
+
+  # Instance Methods
+  def formatted_date
+    date.strftime("%a %b %-d, %Y %-l:%M%P")
   end
 end
