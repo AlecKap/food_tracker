@@ -22,16 +22,16 @@ class EntryLog < ApplicationRecord
 
   # Class Methods
   def self.past_two_days
-    where(date: 2.days.ago..DateTime.current).order(date: :desc)
+    where(date: 1.day.ago.beginning_of_day..DateTime.current).order(date: :desc)
   end
 
   def self.past_week
     last_sunday = Date.today.sunday? ? Date.today : Date.today.beginning_of_week(:sunday)
-    where(date: last_sunday..DateTime.current).order(date: :desc)
+    where(date: last_sunday.beginning_of_day..DateTime.current).order(date: :desc)
   end
 
   def self.past_month
-    where(date: 1.month.ago..DateTime.current).order(date: :desc)
+    where(date: 1.month.ago.beginning_of_day..DateTime.current).order(date: :desc)
   end
 
   def self.formatted_date
