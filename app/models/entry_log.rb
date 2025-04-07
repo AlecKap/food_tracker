@@ -19,6 +19,10 @@ class EntryLog < ApplicationRecord
     end
   end
 
+  def self.past_two_days
+    where(date: 2.days.ago..DateTime.current).order(date: :desc)
+  end
+
   def self.formatted_date
     DateTime.current.strftime("%a %b %-d, %Y %-l:%M%P")
   end
