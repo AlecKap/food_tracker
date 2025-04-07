@@ -18,7 +18,7 @@
               <th>Total Calories</th>
               <th>Total Protein</th>
               <th>Total Added Sugars</th>
-              <th>Total Daily Sugars</th>
+              <th>Total Sugars</th>
               <th>Total Carbs</th>
             </tr>
           </thead>
@@ -26,11 +26,11 @@
             <tr>
               <td><%= @entry_logs.formatted_date %></td>
               <td><%= @entry_logs.total_meals_today %></td>
-              <td><%= @entry_logs.total_calories %></td>
-              <td><%= @entry_logs.total_protein %></td>
-              <td><%= @entry_logs.total_added_sugars %></td>
+              <td><%= @entry_logs.daily_total_calories %></td>
+              <td><%= @entry_logs.daily_total_protein %></td>
+              <td><%= @entry_logs.daily_total_added_sugars %></td>
               <td><%= @entry_logs.total_daily_sugars %></td>
-              <td><%= @entry_logs.total_carbs %></td>
+              <td><%= @entry_logs.daily_total_carbs %></td>
             </tr>
           </tbody>
         </table>
