@@ -3,7 +3,15 @@ class EntryLogsController < ApplicationController
   before_action :authenticate_user!
   # GET /entry_logs or /entry_logs.json
   def index
-    @entry_logs = current_user.entry_logs.past_two_days
+    if params[:week].present?
+      @entry_logs = current_user.entry_logs.past_week
+    elsif params[:month].present?
+      @entry_logs = current_user.entry_logs.past_month
+    elsif params[:today].present?
+      @entry_logs = current_user.entry_logs.newest_first
+    else
+      @entry_logs = current_user.entry_logs.past_two_days
+    end
   end
 
   # GET /entry_logs/1 or /entry_logs/1.json
