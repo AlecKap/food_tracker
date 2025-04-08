@@ -7,6 +7,4 @@ class Meal < ApplicationRecord
   validates :added_sugars, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 200 }
   validates :total_sugars, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 200 }
   validates :carbs, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 500 }
-
-  
 end
